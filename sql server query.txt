@@ -1,0 +1,53 @@
+QUERY 1:
+
+USE master
+GO
+IF NOT EXISTS (
+   SELECT name
+   FROM sys.databases
+   WHERE name = N'VideoData'
+)
+CREATE DATABASE [VideoData]
+GO
+
+
+
+
+Query 2:
+
+IF OBJECT_ID('dbo.MovieDataTable', 'U') IS NOT NULL
+DROP TABLE dbo.MovieDataTable
+GO
+-- Create the table in the specified schema
+CREATE TABLE dbo.MovieDataTable
+(
+   UID        INT    NOT NULL   PRIMARY KEY, -- primary key column
+   MovieName      [NVARCHAR](50)  NOT NULL,
+   MovieGenre  [NVARCHAR](50)  NOT NULL,
+   Year     [NVARCHAR](50)  NOT NULL,
+   StatusVideo [NVARCHAR](50)  NOT NULL,
+   PricingCategory [NVARCHAR](50)  NOT NULL,
+   imdbLink [NVARCHAR](1000)  NOT NULL,
+);
+GO
+INSERT INTO dbo.MovieDataTable
+   ([UID],[MovieName],[MovieGenre],[Year],[StatusVideo],[PricingCategory],[imdbLink])
+VALUES
+   ( 1, N'The Shining', N'Horror', N'1980', N'Rentable', N'Special', N'https://www.imdb.com/title/tt0081505/?pf_rd_m=A2FGELUUNOQJNL&pf_rd_p=e31d89dd-322d-4646-8962-327b42fe94b1&pf_rd_r=M9T2S6MGRZ4X9FA2RXTZ&pf_rd_s=center-1&pf_rd_t=15506&pf_rd_i=top&ref_=chttp_tt_61'),
+   ( 2, N'Pulp Fiction', N'Crime, Drama', N'1994', N'Rentable', N'Generic', N'https://www.imdb.com/title/tt0110912/?pf_rd_m=A2FGELUUNOQJNL&pf_rd_p=e31d89dd-322d-4646-8962-327b42fe94b1&pf_rd_r=M9T2S6MGRZ4X9FA2RXTZ&pf_rd_s=center-1&pf_rd_t=15506&pf_rd_i=top&ref_=chttp_tt_8'),
+   ( 3, N'Midway', N'Action, Drama', N'2019', N'Rented', N'New Release', N'https://www.imdb.com/title/tt6924650/?pf_rd_m=A2FGELUUNOQJNL&pf_rd_p=ea4e08e1-c8a3-47b5-ac3a-75026647c16e&pf_rd_r=926KX2CFG4YQFKA1NPVR&pf_rd_s=center-1&pf_rd_t=15506&pf_rd_i=moviemeter&ref_=chtmvm_tt_16'),
+   ( 4, N'The Dark Knight', N'Action, Crime', N'2008', N'Rented', N'Generic', N'https://www.imdb.com/title/tt0468569/?pf_rd_m=A2FGELUUNOQJNL&pf_rd_p=ea4e08e1-c8a3-47b5-ac3a-75026647c16e&pf_rd_r=926KX2CFG4YQFKA1NPVR&pf_rd_s=center-1&pf_rd_t=15506&pf_rd_i=moviemeter&ref_=chtmvm_tt_58'),
+   ( 5, N'Blade Runner 2049', N'Action, Drama', N'2017', N'Rentable', N'Generic', N'https://www.imdb.com/title/tt1856101/?pf_rd_m=A2FGELUUNOQJNL&pf_rd_p=ea4e08e1-c8a3-47b5-ac3a-75026647c16e&pf_rd_r=926KX2CFG4YQFKA1NPVR&pf_rd_s=center-1&pf_rd_t=15506&pf_rd_i=moviemeter&ref_=chtmvm_tt_71'),
+   ( 6, N'Bohemian Rhapsody', N'Music, Biography', N'2018', N'Rented', N'Generic', N'https://www.imdb.com/title/tt1727824/?pf_rd_m=A2FGELUUNOQJNL&pf_rd_p=ea4e08e1-c8a3-47b5-ac3a-75026647c16e&pf_rd_r=926KX2CFG4YQFKA1NPVR&pf_rd_s=center-1&pf_rd_t=15506&pf_rd_i=moviemeter&ref_=chtmvm_tt_86'),
+   ( 7, N'Toy Story 4', N'Animation, Adventure', N'2019', N'Rented', N'New Release', N'https://www.imdb.com/title/tt1979376/?pf_rd_m=A2FGELUUNOQJNL&pf_rd_p=ea4e08e1-c8a3-47b5-ac3a-75026647c16e&pf_rd_r=926KX2CFG4YQFKA1NPVR&pf_rd_s=center-1&pf_rd_t=15506&pf_rd_i=moviemeter&ref_=chtmvm_tt_99'),
+   ( 8, N'Joker', N'Crime, Thriller', N'2019', N'Rentable', N'New Release', N'https://www.imdb.com/title/tt7286456/?pf_rd_m=A2FGELUUNOQJNL&pf_rd_p=ea4e08e1-c8a3-47b5-ac3a-75026647c16e&pf_rd_r=926KX2CFG4YQFKA1NPVR&pf_rd_s=center-1&pf_rd_t=15506&pf_rd_i=moviemeter&ref_=chtmvm_tt_2'),
+   ( 9, N'Ford v Ferrari', N'Biography, Action', N'2019', N'Rentable', N'New Release', N'https://www.imdb.com/title/tt1950186/?pf_rd_m=A2FGELUUNOQJNL&pf_rd_p=ea4e08e1-c8a3-47b5-ac3a-75026647c16e&pf_rd_r=926KX2CFG4YQFKA1NPVR&pf_rd_s=center-1&pf_rd_t=15506&pf_rd_i=moviemeter&ref_=chtmvm_tt_64'),
+   ( 10, N'The Lighthouse', N'Fantasy, Horror', N'2019', N'Rented', N'New Release', N'https://www.imdb.com/title/tt7984734/?pf_rd_m=A2FGELUUNOQJNL&pf_rd_p=ea4e08e1-c8a3-47b5-ac3a-75026647c16e&pf_rd_r=926KX2CFG4YQFKA1NPVR&pf_rd_s=center-1&pf_rd_t=15506&pf_rd_i=moviemeter&ref_=chtmvm_tt_42'),
+   ( 11, N'Aquaman', N'Action, Fantasy', N'2018', N'Rentable', N'Generic', N'https://www.imdb.com/title/tt1477834/?pf_rd_m=A2FGELUUNOQJNL&pf_rd_p=ea4e08e1-c8a3-47b5-ac3a-75026647c16e&pf_rd_r=926KX2CFG4YQFKA1NPVR&pf_rd_s=center-1&pf_rd_t=15506&pf_rd_i=moviemeter&ref_=chtmvm_tt_47'),
+   ( 12, N'Freaks', N'Sci-Fi, Thriller', N'2018', N'Rented', N'Generic', N'https://www.imdb.com/title/tt8781414/?pf_rd_m=A2FGELUUNOQJNL&pf_rd_p=ea4e08e1-c8a3-47b5-ac3a-75026647c16e&pf_rd_r=926KX2CFG4YQFKA1NPVR&pf_rd_s=center-1&pf_rd_t=15506&pf_rd_i=moviemeter&ref_=chtmvm_tt_79'),
+   ( 13, N'Hustlers', N'Comedy, Crime', N'2019', N'Rented', N'New Release', N'https://www.imdb.com/title/tt5503686/?pf_rd_m=A2FGELUUNOQJNL&pf_rd_p=ea4e08e1-c8a3-47b5-ac3a-75026647c16e&pf_rd_r=926KX2CFG4YQFKA1NPVR&pf_rd_s=center-1&pf_rd_t=15506&pf_rd_i=moviemeter&ref_=chtmvm_tt_3'),
+   ( 14, N'Inglourious Basterds', N'War, Adventure', N'2009', N'Rentable', N'Special', N'https://www.imdb.com/title/tt0361748/?pf_rd_m=A2FGELUUNOQJNL&pf_rd_p=ea4e08e1-c8a3-47b5-ac3a-75026647c16e&pf_rd_r=926KX2CFG4YQFKA1NPVR&pf_rd_s=center-1&pf_rd_t=15506&pf_rd_i=moviemeter&ref_=chtmvm_tt_78'),
+   ( 15, N'Night Hunter', N'Action, Thriller', N'2018', N'Rentable', N'Generic', N'https://www.imdb.com/title/tt6533240/?pf_rd_m=A2FGELUUNOQJNL&pf_rd_p=ea4e08e1-c8a3-47b5-ac3a-75026647c16e&pf_rd_r=926KX2CFG4YQFKA1NPVR&pf_rd_s=center-1&pf_rd_t=15506&pf_rd_i=moviemeter&ref_=chtmvm_tt_51')
+
+GO
+SELECT * FROM dbo.MovieDataTable;
